@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextUtils </title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: linear-gradient(266deg,rgb(255, 19, 19),rgb(109, 109, 246));
+    }
+    
+    .nav-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: auto;
+        background-color: darkslategray;
+        color: floralwhite;
+        size: 40px;
+        
+    }
+    .tittle{
+        margin: 12px;
+        font-weight: 600;
+    }
+    .items{
+        margin: 12px;
+    }
+    .search{
+        margin: 12px;
+    }
+    a{
+        text-decoration: none;
+        size: 40px;
+        color: floralwhite;
+        margin: 0px 50px 0px 50px;
+    }
+
+    .container-m{
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(135, 255, 98);
+        animation: appear 700ms 100ms linear none  ;
+        
+        
+
+    }
+
+    @keyframes appear {
+        0%{
+            z-index: -1;
+            top:-50px;
+        }
+        50%{
+            z-index: -1;
+        
+        }
+        90%{
+            z-index: -1;
+        }
+        100%{
+            z-index: 0;
+            top: 0px;
+        }
+        
+    }
+
+    .close{
+        display: none;
+    }
+
+    .message{
+        margin: 12px;
+        size: 20px;
+        font-weight: 400;
+        
+    }
+
+    button{
+        background-color:  blue ;
+        font-size: 20px;
+        padding: 12px ;
+        border-radius: 40px;
+        margin-top: 10px;
+        border: 2px solid white;
+        box-shadow: 0px 18px 5px 0px inset rgb(168, 174, 255);
+        transition: 200ms;
+        cursor: pointer;
+        
+
+    }
+    button:active{
+        transform: scale(.8);
+    }
+
+    #box{
+        background-color: rgb(255, 95, 95);
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+        margin: 12px;
+        text-align: center;
+        cursor: pointer;
+        
+    }
+
+    .form-div{
+        display: flex;
+        width: 100%;
+        
+        flex-direction: column;
+        height: auto;
+        justify-content: center;
+        align-items: center;    
+        
+        
+    }
+
+    
+
+    .form-in{
+        margin-top: 2px;
+        
+    }
+
+
+</style>
+<body>
+
+    <nav class="nav-container">
+        <div class="tittle">
+            My Textutiles
+        </div>
+        <div class="items">
+            <a href="">Home</a>
+            <a href="">About Us</a>
+            <a href="">Contact</a>
+        </div>
+        <div class="search">
+           <form action="" method="get">
+               <input type="text" name="" id="">
+               <input type="submit" value="Submit">
+           </form>
+        </div>
+
+    </nav>
+
+    <div class="container-m">
+        <div class="message">Welcome To my Text Utils website ! You Can Write Any Text And modify it as per you need</div>
+        <div onclick="closeme()" id="box">X</div>
+    </div>
+
+
+
+    <div class="form-div">
+
+        <form class="form-in" action="/analyze" method="POST">{% csrf_token %}
+            <p style="font-weight: 400;">Enter Your Text Here :</p>
+            <textarea name="text" id="" cols="30" rows="10" style="margin: 0px; width: 615px; height: 162px;"></textarea><br>
+            <input type="radio" name="analyze" value="removepunctuation">Remove Punctuation<br>
+            <input type="radio" name="analyze" value="Capitalizized">Capitalized<br>
+            <input type="radio" name="analyze" value="newlineremover">New line remover<br>
+            <input type="radio" name="analyze" value="Spaceremover">Space remover<br>
+            <input type="radio" name="analyze" value="CharacterCount">Character Count<br>
+            
+            <button type="submit">Submit Analsys</button>
+        </form>
+    </div>
+    <script>
+        function closeme(){
+
+            document.getElementsByClassName("container-m")[0].classList.add("close")
+        }
+    </script>
+    </body>
+</html>
